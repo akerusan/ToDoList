@@ -13,7 +13,6 @@ class NoteRepository(application: Application) {
     init {
         val db = NoteDatabase.getInstance(application)
         noteDao = db!!.noteDao()
-        GlobalScope.launch { insert(Note(1, "test", "test2", 2)) }
         allNotes = noteDao!!.getAllNotes()
     }
 
