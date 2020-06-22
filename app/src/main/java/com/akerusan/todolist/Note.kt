@@ -3,7 +3,7 @@ package com.akerusan.todolist
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "note_table")
+@Entity(tableName = "note_db")
 data class Note(
     @PrimaryKey(autoGenerate = true) var id: Int,
                                      var title: String,

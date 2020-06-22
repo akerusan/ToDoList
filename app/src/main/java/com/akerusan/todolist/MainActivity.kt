@@ -1,32 +1,21 @@
 package com.akerusan.todolist
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.room.Room
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
+
+    private val noteViewModel: NoteViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        GlobalScope.launch { // launch a new coroutine in background and continue
-            getDb()
-        }
-    }
-
-    private fun getDb(){
-        val db =
-            Room.databaseBuilder(applicationContext, NoteDatabase::class.java, "note_table")
-                .fallbackToDestructiveMigration()
-                .build()
-
-        val noteDao = db.noteDao()
-        val newNote = Note(1, "Titre", "Description", 1)
-        noteDao.insert(newNote)
-        Log.v("TAG", "after insert ${noteDao.getAllNotes().toString()}")
-
+        noteViewModel.getAllNotes().observe(this, Observer{
+                notes -> Toast.makeText(this, "onChanged", Toast.LENGTH_LONG).show()// update recyclerView
+        })
     }
 }
