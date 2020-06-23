@@ -1,8 +1,11 @@
 package com.akerusan.todolist
 
 import android.app.Application
+import android.provider.Settings
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -14,20 +17,20 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
         allNotes = repository!!.getAllNotes()
     }
 
-    suspend fun insert(note: Note){
-        repository!!.insert(note)
+    fun insert(note: Note) {
+        GlobalScope.launch { repository!!.insert(note) }
     }
 
-    suspend fun update(note: Note){
-        repository!!.update(note)
+    fun update(note: Note) {
+        GlobalScope.launch { repository!!.update(note) }
     }
 
-    suspend fun delete(note: Note){
-        repository!!.delete(note)
+    fun delete(note: Note) {
+        GlobalScope.launch { repository!!.delete(note) }
     }
 
-    suspend fun deleteAllNotes(){
-        repository!!.deleteAllNotes()
+    fun deleteAllNotes() {
+        GlobalScope.launch { repository!!.deleteAllNotes() }
     }
 
     fun getAllNotes(): LiveData<List<Note>> {
