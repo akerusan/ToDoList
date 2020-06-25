@@ -1,4 +1,4 @@
-package com.akerusan.todolist
+package com.akerusan.todolist.db
 
 import android.content.Context
 import androidx.room.Database

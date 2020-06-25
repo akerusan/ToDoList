@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.akerusan.todolist.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.akerusan.todolist.fragments.AddNoteFragment"
+        android:label="fragment_add_note"
+        tools:layout="@layout/fragment_add_note" >
+        <action
+            android:id="@+id/action_addNoteFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+</navigation>

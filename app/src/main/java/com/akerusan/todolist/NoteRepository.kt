@@ -2,8 +2,9 @@ package com.akerusan.todolist
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.akerusan.todolist.db.Note
+import com.akerusan.todolist.db.NoteDao
+import com.akerusan.todolist.db.NoteDatabase
 
 class NoteRepository(application: Application) {
 

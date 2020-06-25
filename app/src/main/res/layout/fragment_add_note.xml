@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".AddNoteActivity">
+    tools:context=".fragments.AddNoteFragment">
 
     <EditText
         android:id="@+id/add_title"
@@ -26,13 +25,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Priority: "
+        android:text="Date: "
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
-    <NumberPicker
-        android:id="@+id/add_priority"
+    <DatePicker
+        android:id="@+id/add_date"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"/>
 
 </LinearLayout>

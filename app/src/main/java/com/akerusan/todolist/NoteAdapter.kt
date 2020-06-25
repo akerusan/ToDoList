@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.akerusan.todolist.db.Note
 import kotlinx.android.synthetic.main.note_item.view.*
 
 class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(diffCallback) {
@@ -19,7 +20,7 @@ class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(diffCallback) 
             override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
                 return oldItem.title == newItem.title &&
                        oldItem.description == newItem.description &&
-                       oldItem.priority == newItem.priority
+                       oldItem.date == newItem.date
             }
         }
     }
@@ -34,9 +35,9 @@ class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(diffCallback) 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val currentItem = getItem(position)
 
-        holder.priority.text = currentItem.priority.toString()
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
+        holder.date.text = currentItem.date
     }
 
     fun getNoteAt(position: Int) : Note {
@@ -52,9 +53,9 @@ class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(diffCallback) 
     }
 
     inner class NoteViewHolder(item: View) : RecyclerView.ViewHolder(item) {
-        val priority = item.text_view_priority
         val title = item.text_view_title
         val description = item.text_view_description
+        val date = item.text_view_date
 
         init {
             item.setOnClickListener {

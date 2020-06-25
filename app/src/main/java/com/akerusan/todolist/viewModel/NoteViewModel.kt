@@ -1,9 +1,10 @@
-package com.akerusan.todolist
+package com.akerusan.todolist.viewModel
 
 import android.app.Application
-import android.provider.Settings
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.akerusan.todolist.db.Note
+import com.akerusan.todolist.NoteRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
